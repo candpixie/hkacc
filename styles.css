@@ -102,9 +102,14 @@ img{ max-width:100%; }
   letter-spacing:.17em; text-transform:uppercase;
   color:var(--ink-3);
 }
-.strap span:first-child, .strap span:last-child{
+.strap-zh{
   font-family:var(--zh); letter-spacing:.13em; color:var(--red);
   white-space:nowrap;
+}
+.strap-zh i{
+  font-family:var(--disp); font-style:normal; font-weight:600;
+  letter-spacing:.17em; color:var(--ink-3);
+  margin-left:8px;
 }
 .strap-mid{ flex:1; text-align:center; }
 
@@ -255,14 +260,20 @@ img{ max-width:100%; }
 
 .nots{ list-style:none; padding:0; margin:0 0 14px; }
 .nots li{
-  display:flex; gap:8px; align-items:baseline;
+  display:flex; gap:9px; align-items:baseline;
   padding:7px 0;
   border-bottom:1px solid rgba(22,18,14,.2);
-  font-size:13.5px;
 }
 .not-zh{
-  font-family:var(--zh); font-weight:900;
-  font-size:12px; color:var(--red); flex-shrink:0;
+  font-family:var(--zh); font-weight:700;
+  font-size:11px; letter-spacing:.04em;
+  color:var(--ink-3); flex-shrink:0;
+  width:3.4em;
+}
+.not-en{
+  font-family:var(--disp); font-weight:600;
+  font-size:12.5px; letter-spacing:.01em;
+  color:var(--ink);
 }
 .rail-note{ margin:0; font-size:13px; line-height:1.5; color:var(--ink-2); }
 
@@ -309,7 +320,12 @@ img{ max-width:100%; }
 .tile::before{ content:""; position:absolute; inset:6px; border:1px solid rgba(26,107,77,.45); }
 .tile:hover{ transform:translate(2px,2px) rotate(-1.5deg); box-shadow:3px 3px 0 rgba(22,18,14,.85); }
 .t-zh{ font-family:var(--zh); font-weight:900; font-size:clamp(24px,4.2vw,42px); line-height:1; color:var(--ink); }
-.t-n{ position:absolute; top:6px; left:8px; font-family:var(--zh); font-weight:700; font-size:10.5px; color:var(--red); }
+.t-n{
+  position:absolute; top:6px; left:8px;
+  font-family:var(--disp); font-weight:800;
+  font-size:11px; letter-spacing:.04em;
+  color:var(--red);
+}
 .t-en{
   font-family:var(--disp); font-size:9.5px; font-weight:600;
   letter-spacing:.12em; text-transform:uppercase; color:#f0ead9;
@@ -523,6 +539,7 @@ img{ max-width:100%; }
 :root[data-theme="night"] .rail-head{ border-bottom-color:rgba(53,224,164,.5); }
 :root[data-theme="night"] .notice{ border-color:rgba(53,224,164,.4); }
 :root[data-theme="night"] .nots li{ border-bottom-color:rgba(53,224,164,.2); }
+:root[data-theme="night"] .not-en{ color:var(--ink); }
 :root[data-theme="night"] .band{ border-top-color:rgba(53,224,164,.5); border-bottom-color:rgba(53,224,164,.5); }
 :root[data-theme="night"] .band-zh{ color:#140309; box-shadow:0 0 20px -5px var(--red); }
 :root[data-theme="night"] .colophon{ border-top-color:rgba(53,224,164,.5); }
