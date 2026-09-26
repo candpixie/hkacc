@@ -94,7 +94,7 @@ img{ max-width:100%; }
 
 /* strap line under the plate */
 .strap{
-  display:flex; align-items:center; gap:16px;
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px;
   padding:7px 0;
   border-bottom:1px solid var(--ink);
   font-family:var(--disp);
@@ -111,7 +111,7 @@ img{ max-width:100%; }
   letter-spacing:.17em; color:var(--ink-3);
   margin-left:8px;
 }
-.strap-mid{ flex:1; text-align:center; }
+.strap-mid{ text-align:center; }
 
 /* ══════════ THE GRID ══════════ */
 .front{
@@ -261,6 +261,7 @@ img{ max-width:100%; }
 .nots{ list-style:none; padding:0; margin:0 0 14px; }
 .nots li{
   display:flex; gap:9px; align-items:baseline;
+  min-height:1px;
   padding:7px 0;
   border-bottom:1px solid rgba(22,18,14,.2);
 }
