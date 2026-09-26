@@ -14,7 +14,7 @@ python3 -m http.server 4321
 
 HKACC is an applicant to the NYU Student Activities Board New Club Development
 Program (Fall 2026). It is not yet a recognised NYU club and is not affiliated
-with or endorsed by New York University.
+with or endorsed by New York University yet.
 
 ## Licence
 
