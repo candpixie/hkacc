@@ -11,6 +11,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<script>
+  (function(){
+    try{
+      var t = localStorage.getItem('hkacc-theme');
+      if(!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
+      document.documentElement.setAttribute('data-theme', t);
+    }catch(e){ document.documentElement.setAttribute('data-theme','day'); }
+  })();
+</script>
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23efe9db'/><text y='70' x='50' text-anchor='middle' font-size='44' font-weight='900' fill='%23c3362b'>港藝</text></svg>">
 </head>
@@ -27,6 +36,9 @@
       <span>NO. 01</span>
       <span>秋 · AUTUMN 2026</span>
       <span class="mast-ny">NEW YORK</span>
+      <button class="edition" id="edition" type="button" aria-label="Switch edition">
+        <span class="ed-day">日</span><span class="ed-sep">/</span><span class="ed-night">夜</span>
+      </button>
     </div>
 
     <h1 class="nameplate" data-ghost="香港藝術文化學會">香港藝術文化學會</h1>
@@ -38,84 +50,121 @@
     </div>
   </header>
 
-  <!-- ══════════ BILL ══════════ -->
-  <section class="bill">
-    <p class="kicker">Now forming &nbsp;·&nbsp; 徵求創會成員</p>
+  <div class="strap">
+    <span>徵求會員</span>
+    <span class="strap-mid">An applicant to the NYU Student Activities Board New Club Development Programme</span>
+    <span>未獲正式認可</span>
+  </div>
 
-    <h2 class="bill-title">
-      <span class="bl-1">WE STUDY</span>
-      <span class="bl-2">THE WORK</span>
-    </h2>
+  <!-- ══════════ FRONT PAGE GRID ══════════ -->
+  <div class="front">
 
-    <div class="bill-rule" aria-hidden="true"></div>
+    <!-- ─── LEAD ─── -->
+    <article class="lead">
+      <h2 class="lead-head">
+        <span class="lh-1">We study</span>
+        <span class="lh-2">the work</span>
+      </h2>
 
-    <p class="bill-sub">
-      Hong Kong film, literature, Cantopop lyricism, comics, and the
-      Cantonese language. Taken apart and made, not just celebrated.
-    </p>
-
-    <p class="bill-credit">
-      An applicant to the NYU Student Activities Board
-      New&nbsp;Club&nbsp;Development Programme
-    </p>
-  </section>
-
-  <div class="rule-double" aria-hidden="true"></div>
-
-  <!-- ══════════ 一 WHAT THIS IS ══════════ -->
-  <section class="art" id="about">
-    <div class="art-head">
-      <span class="sig">一</span>
-      <h3>What this is</h3>
-      <span class="art-tag">社論 · statement</span>
-    </div>
-
-    <div class="cols">
-      <p class="dropcap">
-        Hong Kong produced one of the most influential film industries of the
-        twentieth century, a literary tradition that barely reaches an American
-        syllabus, a comics culture with its own grammar, and a pop songwriting
-        practice built on a constraint almost no other language imposes. None of
-        it is taught here. None of it has a room here.
+      <p class="standfirst">
+        Hong Kong film, literature, Cantopop lyricism, comics, and the Cantonese
+        language. Taken apart and made, not just celebrated.
       </p>
-      <p>
-        NYU already runs the distinction we are asking for. The Ballet Club and
-        the Ballet Collaborative both exist, because gathering around a thing and
-        practising it are separate activities that need separate rooms.
+
+      <div class="lead-body">
+        <p class="dropcap">
+          Hong Kong produced one of the most influential film industries of the
+          twentieth century, a literary tradition that barely reaches an American
+          syllabus, a comics culture with its own grammar, and a pop songwriting
+          practice built on a constraint almost no other language imposes. None
+          of it is taught here. None of it has a room here.
+        </p>
+        <p>
+          NYU already runs the distinction we are asking for. The Ballet Club and
+          the Ballet Collaborative both exist, because gathering around a thing
+          and practising it are separate activities that need separate rooms.
+        </p>
+        <p>
+          The Hong Kong Students Association is the first kind and does it well.
+          We are the second kind. Nobody is being replaced.
+        </p>
+      </div>
+
+      <table class="ledger">
+        <tbody>
+          <tr>
+            <th scope="row"><span class="led-zh">聚</span>Gathering</th>
+            <td>People from home, in a room, eating. Community as the point.</td>
+            <td class="led-who">HKSA</td>
+          </tr>
+          <tr class="led-us">
+            <th scope="row"><span class="led-zh">做</span>Making</th>
+            <td>Films read closely. Books in both languages. Lyrics written, zines printed, translations argued over.</td>
+            <td class="led-who">HKACC</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <!-- ─── RAIL ─── -->
+    <aside class="rail">
+      <h3 class="rail-head">節目表 <span>Programme</span></h3>
+      <dl class="programme">
+        <div class="prog-row">
+          <dt><span class="p-zh">讀書會</span>Reading circle</dt>
+          <dd class="p-when">biweekly</dd>
+        </div>
+        <div class="prog-row">
+          <dt><span class="p-zh">電影節目</span>Cinema series</dt>
+          <dd class="p-when">termly</dd>
+        </div>
+        <div class="prog-row">
+          <dt><span class="p-zh">講座</span>Guest speakers</dt>
+          <dd class="p-when">6 / yr</dd>
+        </div>
+        <div class="prog-row">
+          <dt><span class="p-zh">工作坊</span>Making workshops</dt>
+          <dd class="p-when">monthly</dd>
+        </div>
+        <div class="prog-row">
+          <dt><span class="p-zh">行街</span>City outings</dt>
+          <dd class="p-when">termly</dd>
+        </div>
+        <div class="prog-row">
+          <dt><span class="p-zh">年度展覽</span>Annual showcase</dt>
+          <dd class="p-when">spring</dd>
+        </div>
+      </dl>
+
+      <div class="notice">
+        <h4>啟事 · Notice</h4>
+        <p>
+          Screenings run with student or faculty introductions. Hong Kong guests
+          appear by video in the New York morning, which is their evening.
+          Workshops are bilingual and assume no Cantonese.
+        </p>
+      </div>
+
+      <h3 class="rail-head">入會須知 <span>Admission</span></h3>
+      <ul class="nots">
+        <li><span class="not-zh">不需要</span>to be from Hong Kong</li>
+        <li><span class="not-zh">不需要</span>a word of Cantonese</li>
+        <li><span class="not-zh">不需要</span>to have seen the films</li>
+        <li><span class="not-zh">不需要</span>dues, audition, application</li>
+      </ul>
+      <p class="rail-note">
+        Most members will not be Hong Kong students. That is the design, not a
+        concession. Open to every enrolled NYU student, every school.
       </p>
-      <p>
-        The Hong Kong Students Association is the first kind and does it well.
-        We are the second kind. Nobody is being replaced.
-      </p>
-    </div>
+    </aside>
 
-    <table class="ledger">
-      <tbody>
-        <tr>
-          <th scope="row"><span class="led-zh">聚</span> Gathering</th>
-          <td>People from home, in a room, eating. Community as the point.</td>
-          <td class="led-who">HKSA</td>
-        </tr>
-        <tr class="led-us">
-          <th scope="row"><span class="led-zh">做</span> Making</th>
-          <td>Films read closely. Books in both languages. Lyrics written, zines printed, translations argued over.</td>
-          <td class="led-who">HKACC</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <!-- ─── PLATE BAND ─── -->
+    <figure class="band">
+      <div class="band-label">
+        <span class="band-zh">附圖</span>
+        <span class="band-en">Plate — why Cantonese songwriting is a technical problem</span>
+      </div>
 
-  <div class="rule-thin" aria-hidden="true"></div>
-
-  <!-- ══════════ 二 THE TONE PLATE ══════════ -->
-  <section class="art plate-sec">
-    <div class="art-head">
-      <span class="sig">二</span>
-      <h3>Exhibit: why Cantonese songwriting is a technical problem</h3>
-      <span class="art-tag">附圖 · plate</span>
-    </div>
-
-    <figure class="plate">
       <div class="tiles">
         <div class="tile-cell"><div class="tile"><span class="t-n">一</span><span class="t-zh">詩</span></div><span class="t-en">poem</span></div>
         <div class="tile-cell"><div class="tile"><span class="t-n">二</span><span class="t-zh">史</span></div><span class="t-en">history</span></div>
@@ -126,171 +175,74 @@
       </div>
 
       <figcaption>
-        <p>
-          <strong>One sound, <em>si</em>. Six words, separated only by pitch.</strong>
-          Now write a melody over it. Move the pitch wrong and you have not sung
-          your lyric, you have sung a different one.
-        </p>
-        <p class="fig-note">
-          Hong Kong lyricists have been solving this in public since the
-          seventies, at scale, inside hit songs, and almost nobody outside the
-          language has noticed. It is one of roughly forty things on our
-          reading list.
-        </p>
+        <strong>One sound, <em>si</em>. Six words, separated only by pitch.</strong>
+        Write a melody over that and move the pitch wrong, and you have not sung
+        your lyric, you have sung a different one. Hong Kong lyricists have been
+        solving this in public since the seventies, inside hit songs, and almost
+        nobody outside the language noticed.
       </figcaption>
     </figure>
-  </section>
 
-  <div class="rule-double" aria-hidden="true"></div>
-
-  <!-- ══════════ 三 PROGRAMME ══════════ -->
-  <section class="art" id="programme">
-    <div class="art-head">
-      <span class="sig">三</span>
-      <h3>Programme</h3>
-      <span class="art-tag">節目表</span>
-    </div>
-
-    <dl class="programme">
-      <div class="prog-row">
-        <dt><span class="p-zh">讀書會</span> Reading and viewing circle</dt>
-        <dd class="p-desc">One short story, poem, comic, or film sequence per session, read in Cantonese and English side by side, then taken apart.</dd>
-        <dd class="p-when">biweekly</dd>
-      </div>
-      <div class="prog-row">
-        <dt><span class="p-zh">電影節目</span> Hong Kong cinema series</dt>
-        <dd class="p-desc">A themed screening run each term with student or faculty introductions. New Wave, Wong Kar-wai, martial arts cinema as craft, post-handover independent film.</dd>
-        <dd class="p-when">termly</dd>
-      </div>
-      <div class="prog-row">
-        <dt><span class="p-zh">講座</span> Guest speakers</dt>
-        <dd class="p-desc">Filmmakers, lyricists, illustrators, translators, scholars. New York based in person; Hong Kong based by video in the New York morning.</dd>
-        <dd class="p-when">6 / year</dd>
-      </div>
-      <div class="prog-row">
-        <dt><span class="p-zh">工作坊</span> Making workshops</dt>
-        <dd class="p-desc">Zine and comic making, lettering and calligraphy, Cantonese lyric writing, subtitling and translation. Hands on the material.</dd>
-        <dd class="p-when">monthly</dd>
-      </div>
-      <div class="prog-row">
-        <dt><span class="p-zh">行街</span> City outings</dt>
-        <dd class="p-desc">Within the five boroughs. Museum of Chinese in America, Asia Society, Chinatown signage and architecture walks, Cantonese opera when it tours.</dd>
-        <dd class="p-when">termly</dd>
-      </div>
-      <div class="prog-row">
-        <dt><span class="p-zh">年度展覽</span> Annual showcase</dt>
-        <dd class="p-desc">One night where members show what they made. A film, a zine, a song, a translation.</dd>
-        <dd class="p-when">spring</dd>
-      </div>
-    </dl>
-  </section>
-
-  <div class="rule-thin" aria-hidden="true"></div>
-
-  <!-- ══════════ 四 COMING ATTRACTIONS ══════════ -->
-  <section class="art" id="events">
-    <div class="art-head">
-      <span class="sig">四</span>
-      <h3>Coming attractions</h3>
-      <span class="art-tag">預告</span>
-    </div>
-
-    <div class="attractions">
-      <article class="attr">
-        <p class="attr-kick">In person · workshop</p>
-        <h4>Cantopop Lyrics Lab<br><span class="attr-sub">Writing in Tone</span></h4>
-        <p>
-          Two hours on the problem in Exhibit 二. We listen to three songs and
-          hear the constraint working, walk through how professional lyricists
-          get around it, then split into groups to write and perform lyrics over
-          a supplied melody.
-        </p>
-        <p>
-          Bilingual worksheets, so no Cantonese required. Native speakers and
-          learners paired on purpose. A working Hong Kong lyricist joins for the
-          last half hour to pull the results apart.
-        </p>
-      </article>
-
-      <article class="attr">
-        <p class="attr-kick">Online · recurring</p>
-        <h4>Studio Visit<br><span class="attr-sub">Hong Kong Artists at Work</span></h4>
-        <p>
-          An hour with a working Hong Kong artist, illustrator, or filmmaker,
-          set in the New York morning so it lands in their evening. Work in
-          progress, shown and explained.
-        </p>
-        <p>
-          The second half belongs to students, who bring their own work for
-          criticism. Recorded with permission and posted, so the hour keeps
-          working after it ends.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <div class="rule-thin" aria-hidden="true"></div>
-
-  <!-- ══════════ 五 ADMISSION ══════════ -->
-  <section class="art" id="who">
-    <div class="art-head">
-      <span class="sig">五</span>
-      <h3>Admission</h3>
-      <span class="art-tag">入會須知</span>
-    </div>
-
-    <ul class="nots">
-      <li><span class="not-zh">不需要</span> to be from Hong Kong</li>
-      <li><span class="not-zh">不需要</span> a word of Cantonese</li>
-      <li><span class="not-zh">不需要</span> to have seen any of the films</li>
-      <li><span class="not-zh">不需要</span> dues, an audition, or an application</li>
-    </ul>
-
-    <p class="admit-note">
-      We expect most members will not be Hong Kong students. That is the design,
-      not a concession. Everything runs bilingually and every session assumes
-      somebody walked in cold. Open to every enrolled NYU student, every school.
-    </p>
-  </section>
-
-  <!-- ══════════ COUPON ══════════ -->
-  <section class="coupon-wrap" id="join">
-    <div class="cutline" aria-hidden="true"><span class="scissors">✂</span></div>
-
-    <div class="coupon">
-      <div class="coupon-corner tl" aria-hidden="true"></div>
-      <div class="coupon-corner tr" aria-hidden="true"></div>
-      <div class="coupon-corner bl" aria-hidden="true"></div>
-      <div class="coupon-corner br" aria-hidden="true"></div>
-
-      <p class="coup-kick">徵求創會成員 · Founding members wanted</p>
-
-      <h3 class="coup-title">Four names, one form,<br>one deadline.</h3>
-
-      <p class="coup-body">
-        HKACC applies to the Student Activities Board this month. SAB requires
-        that the founding group is not drawn from one school, so students outside
-        Tandon are especially wanted: Tisch, Steinhardt, CAS, Gallatin, Stern.
+    <!-- ─── ATTRACTIONS ─── -->
+    <article class="attr attr-a">
+      <p class="attr-kick">In person · workshop</p>
+      <h3>Cantopop Lyrics Lab</h3>
+      <p class="attr-sub">Writing in Tone</p>
+      <p>
+        Two hours on the problem in the plate above. Three songs, the constraint
+        heard working, then groups write and perform lyrics over a supplied
+        melody. Bilingual worksheets. Native speakers and learners paired on
+        purpose. A working Hong Kong lyricist takes the last half hour to pull
+        the results apart.
       </p>
-      <p class="coup-body">
-        No Hong Kong heritage required. No Cantonese required. Care about the
-        work and help build the first year of it.
+    </article>
+
+    <article class="attr attr-b">
+      <p class="attr-kick">Online · recurring</p>
+      <h3>Studio Visit</h3>
+      <p class="attr-sub">Hong Kong Artists at Work</p>
+      <p>
+        An hour with a working artist, illustrator, or filmmaker, set in the New
+        York morning so it lands in their evening. Work in progress, shown and
+        explained. The second half belongs to students, who bring their own for
+        criticism. Recorded with permission, so the hour keeps working after it
+        ends.
       </p>
+    </article>
 
-      <div class="coup-actions">
-        <a class="ink-btn" href="mailto:CONTACT_EMAIL?subject=HKACC%20founding%20member">Write to us</a>
-        <a class="ink-link" href="INSTAGRAM_URL" target="_blank" rel="noopener">Instagram &rsaquo;</a>
+    <!-- ─── COUPON ─── -->
+    <section class="coupon-wrap" id="join">
+      <div class="cutline" aria-hidden="true"><span class="scissors">✂</span></div>
+      <div class="coupon">
+        <div class="coupon-corner tl" aria-hidden="true"></div>
+        <div class="coupon-corner tr" aria-hidden="true"></div>
+        <div class="coupon-corner bl" aria-hidden="true"></div>
+        <div class="coupon-corner br" aria-hidden="true"></div>
+
+        <div class="coup-grid">
+          <div>
+            <p class="coup-kick">入會登記 · Put your name down</p>
+            <h3 class="coup-title">The room opens<br>in spring.</h3>
+          </div>
+          <div>
+            <p class="coup-body">
+              HKACC has its founding four and goes to the Student Activities
+              Board this month. If the application clears, programming begins in
+              the spring term with the Lyrics Lab and the first screening.
+            </p>
+            <div class="coup-actions">
+              <a class="ink-btn" href="mailto:CONTACT_EMAIL?subject=HKACC">Write to us</a>
+              <a class="ink-link" href="INSTAGRAM_URL" target="_blank" rel="noopener">Instagram &rsaquo;</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════ COLOPHON ══════════ -->
+  </div>
+
   <footer class="colophon">
-    <div class="rule-double" aria-hidden="true"></div>
-    <p>
-      An applicant to the NYU Student Activities Board New Club Development
-      Programme. Not yet a recognised NYU club.
-    </p>
+    <p>An applicant to the NYU Student Activities Board New Club Development Programme. Not yet a recognised NYU club.</p>
     <p class="colo-set">紐約 · 香港 · 二〇二六</p>
   </footer>
 

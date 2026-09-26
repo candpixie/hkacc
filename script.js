@@ -18,3 +18,22 @@ if (plate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     });
   }, { passive: true });
 }
+
+// 日 / 夜 — the sheet is printed twice.
+const root = document.documentElement;
+const edition = document.getElementById('edition');
+
+if (edition) {
+  edition.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'night' ? 'day' : 'night';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('hkacc-theme', next); } catch (e) { /* private mode */ }
+  });
+}
+
+// Follow the system until someone states a preference.
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  let stored = null;
+  try { stored = localStorage.getItem('hkacc-theme'); } catch (err) { /* ignore */ }
+  if (!stored) root.setAttribute('data-theme', e.matches ? 'night' : 'day');
+});
