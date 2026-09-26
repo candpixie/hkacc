@@ -570,36 +570,60 @@ img{ max-width:100%; }
 }
 
 .tone-grid{
-  display:grid; gap:10px;
+  display:grid; gap:16px;
   grid-template-columns:repeat(6, 1fr);
-  margin-bottom:30px;
+  margin-bottom:34px;
 }
 .tone-cell{
-  display:flex; flex-direction:column; align-items:center; gap:7px;
-  padding:20px 8px 16px;
-  border:1px solid rgba(47,224,176,.22);
-  border-radius:3px;
-  background:rgba(6,13,13,.6);
-  transition:border-color .2s, background .2s, transform .2s;
+  display:flex; flex-direction:column; align-items:center; gap:11px;
 }
-.tone-cell:hover{
-  border-color:var(--jade);
-  background:rgba(47,224,176,.08);
-  transform:translateY(-3px);
+
+/* ── mahjong tile ──────────────────────────────────────── */
+.tile{
+  position:relative;
+  width:100%; aspect-ratio:1 / 1.4;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:8px 8px 5px 5px;
+  background:
+    linear-gradient(168deg, #fefdf7 0%, #f7f3e6 52%, #ebe5d3 100%);
+  border:1px solid #d3ccb7;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -6px 0 rgba(0,0,0,.05),
+    0 5px 0 #1d7a5e,
+    0 6px 1px #14563f,
+    0 16px 26px -10px rgba(0,0,0,.8);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+/* engraved inner frame, like a real tile face */
+.tile::before{
+  content:""; position:absolute; inset:7px;
+  border:1px solid rgba(29,122,94,.3);
+  border-radius:3px;
+}
+.tile:hover{
+  transform:translateY(-5px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -6px 0 rgba(0,0,0,.05),
+    0 9px 0 #1d7a5e,
+    0 10px 1px #14563f,
+    0 24px 34px -12px rgba(0,0,0,.85);
 }
 .t-zh{
   font-family:var(--zh); font-weight:900;
-  font-size:clamp(26px, 4.4vw, 42px); line-height:1;
-  color:var(--jade);
-  text-shadow:0 0 14px rgba(47,224,176,.45);
+  font-size:clamp(28px, 4.6vw, 44px); line-height:1;
+  color:#15493a;
+  text-shadow:0 1px 0 rgba(255,255,255,.7);
 }
 .t-n{
-  font-family:var(--sans); font-size:10.5px; font-weight:600;
-  letter-spacing:.14em;
-  color:var(--amber);
+  position:absolute; top:9px; left:11px;
+  font-family:var(--zh); font-weight:700;
+  font-size:12px; line-height:1;
+  color:#c02a2a;
 }
 .t-en{
-  font-size:10.5px; letter-spacing:.08em;
+  font-size:10.5px; letter-spacing:.1em;
   color:var(--paper-faint);
   text-align:center;
 }
@@ -646,12 +670,12 @@ img{ max-width:100%; }
   .rail-en{ writing-mode:horizontal-tb; transform:none; }
   .pair{ grid-template-columns:1fr; }
   .plate-op{ justify-self:center; }
-  .tone-grid{ grid-template-columns:repeat(3, 1fr); }
+  .tone-grid{ grid-template-columns:repeat(3, 1fr); gap:12px; }
   .tone{ padding:30px 20px 26px; }
 }
 @media (max-width:430px){
   .tone-grid{ grid-template-columns:repeat(2, 1fr); }
 }
 @media (prefers-reduced-motion:reduce){
-  .tone-cell:hover{ transform:none; }
+  .tile:hover{ transform:none; }
 }
