@@ -67,3 +67,11 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
   try { stored = localStorage.getItem('hkacc-theme'); } catch (err) { /* ignore */ }
   if (!stored) setTheme(e.matches ? 'night' : 'day', false);
 });
+
+// Tiles turn over. Hover and keyboard focus handle themselves in CSS;
+// touch has neither, so a tap latches the turn.
+for (const tile of document.querySelectorAll('.tile')) {
+  tile.addEventListener('click', () => {
+    tile.dataset.turned = tile.dataset.turned === 'true' ? 'false' : 'true';
+  });
+}
