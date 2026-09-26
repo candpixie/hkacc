@@ -1,21 +1,20 @@
-// Reveal sections as they come into view.
-const reveal = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'none';
-      reveal.unobserve(entry.target);
-    }
-  }
-}, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+// The red plate drifts out of register as you move across the sheet,
+// the way a cheap two-colour run never quite lines up.
+const plate = document.querySelector('.nameplate');
 
-const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (plate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let queued = false;
 
-if (motionOK) {
-  for (const el of document.querySelectorAll('.section, .card, .event')) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity .7s ease, transform .7s ease';
-    reveal.observe(el);
-  }
+  window.addEventListener('pointermove', (e) => {
+    if (queued) return;
+    queued = true;
+
+    requestAnimationFrame(() => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;   // -1 .. 1
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      plate.style.setProperty('--mx', `${(x * 7).toFixed(2)}px`);
+      plate.style.setProperty('--my', `${(y * 5).toFixed(2)}px`);
+      queued = false;
+    });
+  }, { passive: true });
 }
