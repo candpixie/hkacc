@@ -350,25 +350,26 @@ img{ max-width:100%; }
 
 .t-zh{
   font-family:var(--zh); font-weight:900;
-  font-size:clamp(24px,4.2vw,42px); line-height:1; color:var(--ink);
+  font-size:clamp(24px,4.2vw,42px); line-height:1;
+  color:#16120e;
 }
 .t-jp{
   font-family:var(--disp); font-weight:800;
   font-size:clamp(14px,2.3vw,23px); letter-spacing:.02em;
   line-height:1;
-  color:var(--green);
+  color:#1a6b4d;
 }
 .t-back-en{
   font-family:var(--text); font-style:italic;
-  font-size:clamp(10px,1.4vw,14px); line-height:1.2;
-  color:var(--ink);
+  font-size:clamp(11px,1.5vw,15px); line-height:1.25;
+  color:#2c2419;
   padding:0 6px;
 }
 .t-n{
   position:absolute; top:6px; left:8px;
   font-family:var(--disp); font-weight:800;
   font-size:11px; letter-spacing:.04em;
-  color:var(--red);
+  color:#c0321f;
 }
 .t-en{
   font-family:var(--disp); font-size:9.5px; font-weight:600;
@@ -632,7 +633,6 @@ img{ max-width:100%; }
   box-shadow:5px 5px 0 rgba(0,0,0,.75), 0 0 32px -8px rgba(53,224,164,.55);
 }
 :root[data-theme="night"] .face{ border-color:#0a0d0c; }
-:root[data-theme="night"] .t-zh{ color:#16120e; }
 :root[data-theme="night"] .t-en{ color:var(--ink-2); }
 
 /* programme */
